@@ -1,0 +1,5 @@
+body { font-family: Arial; background:#e7ebf0; }
+#left { width:30%; float:left; background:#fff; height:100vh; }
+#right { width:70%; float:left; padding:10px; }
+#chat { height:70vh; overflow:auto; background:#fff; margin-bottom:5px; }
+div { padding:4px; }

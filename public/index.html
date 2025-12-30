@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BubbleChat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h2>BubbleChat</h2>
+
+<input id="u" placeholder="Ник">
+<input id="p" type="password" placeholder="Пароль">
+
+<button onclick="login()">Войти</button>
+<button onclick="reg()">Регистрация</button>
+
+<script>
+async function reg() {
+  const r = await fetch("/register", {
+    method:"POST",
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({username:u.value,password:p.value})
+  });
+  alert((await r.json()).error || "Готово");
+}
+async function login() {
+  const r = await fetch("/login", {
+    method:"POST",
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({username:u.value,password:p.value})
+  });
+  const j = await r.json();
+  if(j.ok) location="/chat.html";
+  else alert(j.error);
+}
+</script>
+</body>
+</html>
